@@ -8,15 +8,14 @@ import { Routes, RouterModule } from '@angular/router';
 const userRoutes: Routes = [
   
   {
+    path: 'create', 
+    component: CreateComponent
+         },          
+  {
     path: 'view', 
     component: ViewComponent
           },
   
-  {
-     path: 'list', 
-     component: CreateComponent
-          }        
-    
 ];
 
 
