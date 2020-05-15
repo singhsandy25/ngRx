@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ngRx"
+    }
+  },
+  "defaultProject": "ngRx",
+  "cli": {
+    "analytics": false
+  }
 }
