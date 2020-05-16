@@ -1,6 +1,6 @@
 <h1 class="display-3 mt-1" style="margin-left: 35%; padding: 20px;">Add Details</h1>
 <div class="container" style="background-color:#dedede;">
-<form class="t-5"  [formGroup]="userForm" (ngSubmit)="onSubmit()" >
+<form class="t-5"  [formGroup]="userForm" (ngSubmit)="onSubmit(createForm)" #createForm="ngForm" >
   
     <div class="form-group">  
     <label for="Name">Name :  </label><br>

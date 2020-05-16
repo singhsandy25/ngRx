@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { user } from './../model/user.model';
-import { FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { AppState } from './../../store';
+import { Store } from '@ngrx/store';
+import { createCourse } from './../store/user.action';
 
 
 @Component({
@@ -11,9 +14,7 @@ import { Validators } from '@angular/forms';
 })
 export class CreateComponent  {
 
-  constructor( private fb: FormBuilder ) { }
-
-   user: user;
+  constructor( private fb: FormBuilder, private store: Store<AppState> ) { }
   
     userForm=this.fb.group
     ({
@@ -39,20 +40,20 @@ export class CreateComponent  {
       return this.userForm.get("contact");
     }
 
-
-
-    onSubmit() 
+    onSubmit(submittedForm) 
     {
-     //console.log("hello");
-     //console.log(this.Name.value);
-        this.user = {
-        name: this.Name.value,
-        email: this.email.value,
-        contact: this.contact.value
+   
+       const user : user = {
+        name: submittedForm.value.Name,
+        email: submittedForm.value.email,
+        contact: submittedForm.value.contact
         };
 
-        console.log(this.user);
-    }
+        console.log(user);
+        
+        this.store.dispatch(createCourse({user}));
+
+     }
 
 
 }
