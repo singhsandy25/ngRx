@@ -4,7 +4,7 @@ import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { AppState } from './../../store';
 import { Store } from '@ngrx/store';
-import { createCourse } from './../store/user.action';
+import { createUser } from './../store/user.action';
 
 
 @Component({
@@ -20,7 +20,6 @@ export class CreateComponent  {
     ({
       Name:["",[Validators.required, Validators.maxLength(30), Validators.minLength(2)]],
       email:["",[Validators.required, Validators.email]],
-      //contact:["",Validators.required,Validators.pattern("[789][0-9]{9}")],
       contact:[""]
       
     })
@@ -51,7 +50,7 @@ export class CreateComponent  {
 
         console.log(user);
         
-        this.store.dispatch(createCourse({user}));
+        this.store.dispatch(createUser({user}));
 
      }
 

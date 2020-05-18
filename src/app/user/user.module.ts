@@ -7,10 +7,9 @@ import { UserRoutingModule } from './user-routing.module';
 import { ServiceService } from './service/service.service';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { courseReducer } from './store/user.reducer';
-import { CourseEffects } from './store/user.effect';
-
-
+import { userReducer } from './store/user.reducer';
+import { UserEffects } from './store/user.effect';
+import { UserResolver } from './user.resolver';
 
 
 @NgModule({
@@ -20,10 +19,10 @@ import { CourseEffects } from './store/user.effect';
     UserRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    StoreModule.forFeature('courses', courseReducer),
-    EffectsModule.forFeature([CourseEffects])
+    StoreModule.forFeature('user', userReducer),
+    EffectsModule.forFeature([UserEffects])
 
   ],
-  providers: [ServiceService]
+  providers: [ServiceService,UserResolver]
 })
 export class UserModule { }

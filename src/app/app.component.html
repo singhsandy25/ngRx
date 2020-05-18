@@ -1,9 +1,18 @@
 
-<nav class="navbar navbar-expand-lg navbar-light bg-dark ">
-    <a class="nav-item nav-link"  routerLink="/user/create" routerLinkActive="active">Create</a>
-    <a class="nav-item nav-link"  routerLink="/user/view" routerLinkActive="active">View</a>
-</nav>
+<div>
+  <div>
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/user/create" routerLinkActive="active">create user</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/user/view" routerLinkActive="active">view users</a>
+          </li>
+      </ul>
+  </div>
 
+  <div style="margin-top: 20px;">
+      <router-outlet></router-outlet>
+  </div>
 
-
-<router-outlet></router-outlet>
+</div>

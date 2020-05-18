@@ -1,16 +1,16 @@
-import { CourseState } from './user.reducer';
+import { UserState } from './user.reducer';
 import { user } from './../model/user.model';
 import { createSelector, createFeatureSelector } from '@ngrx/store';
-import { selectAll, selectIds } from './user.reducer';
+import { selectAll } from './user.reducer';
 
-export const courseFeatureSelector = createFeatureSelector<CourseState>('courses');
+export const userFeatureSelector = createFeatureSelector<UserState>('user');
 
-export const getAllCourses = createSelector(
-  courseFeatureSelector,
+export const getAllUsers = createSelector(
+  userFeatureSelector,
   selectAll
 );
 
-export const areCoursesLoaded = createSelector(
-  courseFeatureSelector,
-  state => state.coursesLoaded
+export const areUserLoaded = createSelector(
+  userFeatureSelector,
+  state => state.usersLoaded
 );

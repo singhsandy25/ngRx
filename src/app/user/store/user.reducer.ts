@@ -3,29 +3,31 @@ import { user } from './../model/user.model';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { createReducer, on } from '@ngrx/store';
 // import { courseActionTypes, coursesLoaded } from './user.action';
-import { courseActionTypes } from './user.action';
+import { userActionTypes } from './user.action';
 
-export interface CourseState extends EntityState<user> {
-  coursesLoaded: boolean;
+export interface UserState extends EntityState<user> {
+  usersLoaded: boolean;
 }
 
-export const adapter: EntityAdapter<user> = createEntityAdapter<user>();
+export const adapter: EntityAdapter<user> = createEntityAdapter<user>({
+    selectId: user => user.name
+  });
 
 export const initialState = adapter.getInitialState({
-  coursesLoaded: false
+  usersLoaded: false
 });
 
-export const courseReducer = createReducer(
+export const userReducer = createReducer(
   initialState,
 
-  on(courseActionTypes.coursesLoaded, (state, action) => {
+  on(userActionTypes.usersLoaded, (state, action) => {
     return adapter.addAll(
-      action.user,
-      {...state, coursesLoaded: true}
+      action.users,
+      {...state, usersLoaded: true}
     );
   }),
 
-  on(courseActionTypes.createCourse, (state, action) => {
+  on(userActionTypes.createUser, (state, action) => {
     return adapter.addOne(action.user, state);
   }),
 
