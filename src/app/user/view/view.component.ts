@@ -34,6 +34,10 @@ export class ViewComponent implements OnInit {
     //     console.log(this.users);
     //   });
   }
+
+  deleteUser(id: string) {
+    this.store.dispatch(userActionTypes.deleteUser({id}));
+    console.log("user deleted");  }
   
 
 }

@@ -18,12 +18,18 @@ export const createUser = createAction(
   
 );
 
+export const deleteUser = createAction(
+  '[Users List Operations] Delete User',
+  props<{id: string}>()
+);
+
 
 
 export const userActionTypes = {
   loadusers,
   usersLoaded,
-     createUser
+     createUser,
+        deleteUser,
 
 
 };

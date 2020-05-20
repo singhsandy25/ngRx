@@ -20,6 +20,7 @@ export class CreateComponent  {
     ({
       Name:["",[Validators.required, Validators.maxLength(30), Validators.minLength(2)]],
       email:["",[Validators.required, Validators.email]],
+
       contact:[""]
       
     })

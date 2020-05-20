@@ -1,5 +1,5 @@
 import { userActionTypes, usersLoaded } from './user.action';
-
+// import { courseActionTypes, coursesLoaded, updateCourse } from './user.action';
 import { ServiceService } from './../service/service.service';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { concatMap, map, tap } from 'rxjs/operators';
@@ -22,7 +22,16 @@ export class UserEffects {
   createUsers$ = createEffect(() =>
     this.actions$.pipe(
       ofType(userActionTypes.createUser),
-      concatMap((action) => this.ServiceService.createUsers(action.user))
+      concatMap((action) => this.ServiceService.createUsers(action.user)),
+    //   tap(() => this.router.navigateByUrl('/users'))
+    ),
+    {dispatch: false}
+  );
+
+  deleteUser$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(userActionTypes.deleteUser),
+      concatMap((action) => this.ServiceService.deleteUser(action.id))
     ),
     {dispatch: false}
   );

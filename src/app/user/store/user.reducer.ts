@@ -31,13 +31,11 @@ export const userReducer = createReducer(
     return adapter.addOne(action.user, state);
   }),
 
-//   on(courseActionTypes.deleteCourse, (state, action) => {
-//     return adapter.removeOne(action.courseId, state);
-//   }),
+  on(userActionTypes.deleteUser, (state, action) => {
+    return adapter.removeOne(action.id, state);
+  }),
 
-//   on(courseActionTypes.updateCourse, (state, action) => {
-//     return adapter.updateOne(action.update, state);
-//   })
+
 );
 
 export const { selectAll, selectIds } = adapter.getSelectors();

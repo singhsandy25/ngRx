@@ -25,6 +25,10 @@ export class ServiceService {
     return this.http.post<user>('https://jsonplaceholder.typicode.com/posts', user);
   }
 
+  deleteUser(id: string): Observable<any> {
+    return this.http.delete('https://jsonplaceholder.typicode.com/posts/1' + id);
+  }
+
  
 }
   
