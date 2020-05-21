@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 import { user } from './../model/user.model';
 import { ServiceService } from './../service/service.service';
 // import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
-// import { Update } from '@ngrx/entity';
+import { Update } from '@ngrx/entity';
 
 @Component({
   selector: 'app-view',
@@ -22,6 +22,8 @@ export class ViewComponent implements OnInit {
    }
 
    users={};
+   userToBeUpdated: user;
+   isUpdateActivated = false;
    
   ngOnInit(): void {
     this.user$ = this.store.select(getAllUsers);
@@ -37,7 +39,28 @@ export class ViewComponent implements OnInit {
 
   deleteUser(id: string) {
     this.store.dispatch(userActionTypes.deleteUser({id}));
-    console.log("user deleted");  }
-  
+    console.log("user deleted");  
+  }
+
+  showUpdateForm(user: user) {
+    this.userToBeUpdated = {...user};
+    console.log(this.userToBeUpdated)
+    this.isUpdateActivated = true;
+  }
+
+  updateCourse(updateForm) {
+    const update: Update<user> = {
+      id: this.userToBeUpdated.id,
+      changes: {
+        ...this.userToBeUpdated,
+        ...updateForm.value
+      }
+    };
+
+    this.store.dispatch(userActionTypes.updateUser({update}));
+
+    this.isUpdateActivated = false;
+    this.userToBeUpdated = null;
+  }
 
 }
