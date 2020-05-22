@@ -21,7 +21,7 @@ export class CreateComponent  {
       Name:["",[Validators.required, Validators.maxLength(30), Validators.minLength(2)]],
       email:["",[Validators.required, Validators.email]],
 
-      contact:[""]
+      phone:[""]
       
     })
   
@@ -35,18 +35,19 @@ export class CreateComponent  {
       return this.userForm.get("email");
     }
   
-    get contact()
+    get phonet()
     {
-      return this.userForm.get("contact");
+      return this.userForm.get("phone");
     }
 
     onSubmit(submittedForm) 
     {
    
        const user : user = {
+        id: submittedForm.value.id,
         name: submittedForm.value.Name,
         email: submittedForm.value.email,
-        contact: submittedForm.value.contact
+        phone: submittedForm.value.phone
         };
 
         console.log(user);

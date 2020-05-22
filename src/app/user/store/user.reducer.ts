@@ -2,7 +2,6 @@
 import { user } from './../model/user.model';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { createReducer, on } from '@ngrx/store';
-// import { courseActionTypes, coursesLoaded } from './user.action';
 import { userActionTypes } from './user.action';
 
 export interface UserState extends EntityState<user> {
@@ -10,7 +9,7 @@ export interface UserState extends EntityState<user> {
 }
 
 export const adapter: EntityAdapter<user> = createEntityAdapter<user>({
-    selectId: user => user.id
+    selectId: user => user.name
   });
 
 export const initialState = adapter.getInitialState({
@@ -35,6 +34,9 @@ export const userReducer = createReducer(
     return adapter.removeOne(action.id, state);
   }),
 
+  on(userActionTypes.updateUser, (state, action) => {
+    return adapter.updateOne(action.update, state);
+  })
 
 );
 

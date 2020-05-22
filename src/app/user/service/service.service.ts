@@ -28,6 +28,10 @@ export class ServiceService {
   deleteUser(id: string): Observable<any> {
     return this.http.delete('https://jsonplaceholder.typicode.com/posts/1' + id);
   }
+ 
+  updateUser(id: string | number, changes: Partial<user>): Observable<any> {
+    return this.http.put('https://jsonplaceholder.typicode.com/posts/1' + id, changes);
+  }
 
  
 }

@@ -21,7 +21,8 @@ export class ViewComponent implements OnInit {
   
    }
 
-   users={};
+   users$: Observable<user[]>;
+  //  users={};
    userToBeUpdated: user;
    isUpdateActivated = false;
    
@@ -48,13 +49,14 @@ export class ViewComponent implements OnInit {
     this.isUpdateActivated = true;
   }
 
-  updateCourse(updateForm) {
+  updateUser(updateForm) {
     const update: Update<user> = {
       id: this.userToBeUpdated.id,
       changes: {
         ...this.userToBeUpdated,
         ...updateForm.value
       }
+      
     };
 
     this.store.dispatch(userActionTypes.updateUser({update}));

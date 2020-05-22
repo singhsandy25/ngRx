@@ -17,12 +17,14 @@
           
           <td>
             <!-- <button (click)="showUpdateForm(course)" class="btn btn-primary" style="margin: 5px">Update</button> -->
-            <button  class="btn btn-info" style="margin: 5px" data-toggle="modal" data-target="#exampleModalLong">view</button>
+            <button  class="btn btn-info" (click)="showUpdateForm(user)" style="margin: 5px" data-toggle="modal" data-target="#exampleModalLong">view</button>
             <button (click)="deleteUser(user.id)" class="btn btn-danger" style="margin: 5px">Delete</button>
           </td>
         </tr>
       </tbody>
     </table>
+    
+  </div>
 
     <!-- Modal -->
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -34,32 +36,31 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-            <!-- <p>Name: {{Name.value}} </p>
-            <p>Gender: {{Gender.value}} </p>
-            <p>Email : {{email.value}} </p>    
-            <p>Technology :
-              <span *ngFor= "let data of selectedTechnology" >{{ data }} </span>
-            </p> -->
+      <div class="modal-body " >
+                       
             <div *ngIf="isUpdateActivated" style="margin-top: 50px; margin-left: 50px;">
               <h4>User Details</h4>
-              <form (ngSubmit)="updateUser(updateForm)" #updateForm="ngForm">
+              <form  (ngSubmit)="updateUser(updateForm)" #updateForm="ngForm">
+                <div class="form-group">
+                  <label for="id">UserId</label>
+                  <input type="text" id="id" name="id" class="form-control" [(ngModel)]="userToBeUpdated.id"  style="width: 400px"/>
+                </div>
                 <div class="form-group">
                   <label for="name">Name</label>
-                  <input type="text" id="name" name="name" class="form-control" required  [(ngModel)]="userToBeUpdated.name"  style="width: 400px"/>
+                  <input type="text" id="name" name="name" class="form-control" [(ngModel)]="userToBeUpdated.name"  style="width: 400px"/>
                 </div>
                 <div class="form-group">
                   <label for="email">Email</label>
-                  <input type="text" id="email" name="email" class="form-control" required  [(ngModel)]="userToBeUpdated.email" style="width: 400px"/>
+                  <input type="text" id="email" name="email" class="form-control" [(ngModel)]="userToBeUpdated.email" style="width: 400px"/>
                 </div>
                 <div class="form-group">
-                  <label for="contact">Contact</label>
-                  <input type="text" id="contact" name="contact" class="form-control" required  [(ngModel)]="userToBeUpdated.contact" style="width: 400px"/>
+                  <label for="phone">Contact</label>
+                  <input type="text" id="phone" name="phone" class="form-control" [(ngModel)]="userToBeUpdated.phone" style="width: 400px"/>
                 </div>
-                
+
                 <div class="modal-footer">
                   <!-- <button [disabled]="updateForm.invalid"  class="btn btn-primary" type="submit">Update</button> -->
-                  <button   class="btn btn-primary" type="submit">Update</button>
+                  <button   class="btn btn-primary" type="submit" >Update</button>
                   <button class="btn btn-primary" data-dismiss="modal">Close</button>
                 </div>
               </form>
@@ -69,7 +70,6 @@
   </div>
 </div>
   
-   
-  </div> 
+    
 
   

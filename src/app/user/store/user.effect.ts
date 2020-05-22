@@ -2,7 +2,7 @@ import { userActionTypes, usersLoaded } from './user.action';
 // import { courseActionTypes, coursesLoaded, updateCourse } from './user.action';
 import { ServiceService } from './../service/service.service';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
-import { concatMap, map, tap } from 'rxjs/operators';
+import { concatMap, map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -22,8 +22,8 @@ export class UserEffects {
   createUsers$ = createEffect(() =>
     this.actions$.pipe(
       ofType(userActionTypes.createUser),
-      concatMap((action) => this.ServiceService.createUsers(action.user)),
-    //   tap(() => this.router.navigateByUrl('/users'))
+      concatMap((action) => this.ServiceService.createUsers(action.user))
+    
     ),
     {dispatch: false}
   );
@@ -32,6 +32,14 @@ export class UserEffects {
     this.actions$.pipe(
       ofType(userActionTypes.deleteUser),
       concatMap((action) => this.ServiceService.deleteUser(action.id))
+    ),
+    {dispatch: false}
+  );
+
+  updateUser$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(userActionTypes.updateUser),
+      concatMap((action) => this.ServiceService.updateUser(action.update.id, action.update.changes))
     ),
     {dispatch: false}
   );

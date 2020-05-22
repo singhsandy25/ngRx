@@ -1,6 +1,6 @@
 import { user } from './../model/user.model';
 import { createAction, props } from '@ngrx/store';
-// import {Update} from '@ngrx/entity';
+import {Update} from '@ngrx/entity';
 
 
 export const loadusers= createAction(
@@ -23,17 +23,17 @@ export const deleteUser = createAction(
   props<{id: string}>()
 );
 
-// export const updateCourse = createAction(
-//   '[Courses List Operations] Update Course',
-//   props<{update: Update<Course>}>()
-// );
+export const updateUser = createAction(
+  '[Users List Operations] Update User',
+  props<{update: Update<user>}>()
+);
 
 export const userActionTypes = {
   loadusers,
   usersLoaded,
      createUser,
         deleteUser,
-//   updateCourse
+          updateUser
 
 };
 
